@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Row, Col } from 'reactstrap';
+import InputStocks from './Components/InputStocks';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return (
+        <div className="App container">
+            <h2 className="text-center">Balanceador de carteira</h2>
+            <br/><br/>
+            <Row>
+                <Col lg="6" md="6" sm="6">
+                    <InputStocks/>
+                </Col>
+                <Col lg="6" md="6" sm="6">
+                    <InputStocks/>
+                </Col>
+            </Row>
+        </div>
+    );
 }
-
-export default App;
