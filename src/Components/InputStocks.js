@@ -4,7 +4,6 @@ import { Card, CardBody, CardHeader, CardTitle, Row, Col, FormGroup, Input } fro
 export default class InputStocks extends Component {
     submitForm(event){
         event.preventDefault();
-
     }
     render() {
         return(
@@ -25,13 +24,13 @@ export default class InputStocks extends Component {
                                 <Col lg="4" md="4" sm="4">
                                     <FormGroup>
                                         <label>Quantidade</label>
-                                        <Input type="number" placeholder="Quantidade" className="form-control" innerRef={(input) => this.quantity = input}/>
+                                        <Input type="number" min="1" placeholder="Quantidade" className="form-control" innerRef={(input) => this.quantity = input}/>
                                     </FormGroup>
                                 </Col>
                                 <Col lg="4" md="4" sm="4">
                                     <FormGroup>
                                         <label>Price</label>
-                                        <Input type="number" step="0.01" placeholder="Preco" className="form-control" innerRef={(input) => this.price = input}/>
+                                        <Input type="number" step="0.01" min="1" placeholder="Preco" className="form-control" innerRef={(input) => this.price = input}/>
                                     </FormGroup>
                                 </Col>
                             </Row>
