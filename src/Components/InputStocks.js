@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardHeader, CardTitle, Row, Col, FormGroup, Input } from 'reactstrap';
+import { stockListService } from '../Services';
 
 export default class InputStocks extends Component {
     submitForm(event){
         event.preventDefault();
+        const stock = { 'code': this.code.value, 'quantity': this.quantity.value, 'price': this.price.value };
+        stockListService.sendStocks(stock);
+        this.code.value = ""; this.quantity.value = ""; this.price.value = "";
     }
+    
     render() {
         return(
             <div className="content">

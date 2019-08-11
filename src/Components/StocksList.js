@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 import { Card, CardHeader, CardTitle, CardBody, Table } from'reactstrap';
+import { stockListService } from '../Services';
 
 export default class StocksList extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            stocks: []
+        };
+    }
+
+    componentDidMount() {
+        // subscribe to home component messages
+        this.subscription = stockListService.getStocks().subscribe(message => {
+            if (message) {
+                // add message to local state if not empty
+                this.setState({ stocks: [...this.state.stocks, message.stock] });
+            } else {
+                // clear messages when empty message received
+                this.setState({ stocks: [] });
+            }
+        });
+    }
     render() {
         return (
             <div className="content">
@@ -20,12 +41,14 @@ export default class StocksList extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                { this.state.stocks.map((stock, i) =>
+                                    <tr key={ i }>
+                                        <td>{ stock['code'] }</td>
+                                        <td>{ stock.quantity }</td>
+                                        <td>{ stock.price }</td>
+                                        <td>{ stock.code }</td>
+                                    </tr>
+                                )}
                             </tbody>
                         </Table>
                     </CardBody>
