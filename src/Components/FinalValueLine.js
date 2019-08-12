@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { finalValueStocks } from '../Services';
+import { finalValueStocksService } from '../Services';
 
 export default class FinalValueLine extends Component {
     constructor() {
@@ -8,7 +8,7 @@ export default class FinalValueLine extends Component {
     }
 
     componentDidMount() {
-        this.subscription = finalValueStocks.getFinalValue().subscribe(message => {
+        this.subscription = finalValueStocksService.getFinalValue().subscribe(message => {
             if (message) {
                 this.setState({ finalValue: message.finalValue });
             } else {

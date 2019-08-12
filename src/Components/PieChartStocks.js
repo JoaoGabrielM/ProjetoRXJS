@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardHeader, CardTitle, CardBody } from 'reactstrap';
 import { ResponsiveContainer, PieChart, Pie, Tooltip } from 'recharts';
-import { pieChartService } from '../Services';
+import { allStocksService } from '../Services';
 
 export default class PieChartStocks extends Component {
     constructor() {
@@ -11,7 +11,7 @@ export default class PieChartStocks extends Component {
 
     componentDidMount() {
         // subscribe to home component messages
-        this.subscription = pieChartService.getStocks().subscribe(message => {
+        this.subscription = allStocksService.getStocks().subscribe(message => {
             if (message) {
                 // add message to local state if not empty
                 this.setState({ data: [...this.state.data, message.stock] });

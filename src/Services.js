@@ -1,27 +1,27 @@
 import { Subject } from 'rxjs';
 
-const subject = new Subject();
+const stockListSubject = new Subject();
 
 export const stockListService = {
-    sendStocks: stock => subject.next({ stock: stock }),
-    clearStocks: () => subject.next(),
-    getStocks: () => subject.asObservable()
+    sendStocks: stock => stockListSubject.next({ stock: stock }),
+    clearStocks: () => stockListSubject.next(),
+    getStocks: () => stockListSubject.asObservable()
 };
 
-const pieSubject = new Subject();
+const allStocksSubject = new Subject();
 
-export const pieChartService = {
+export const allStocksService = {
     sendStock: stock => { 
-        const newStock = { code: stock.code, finalValue: stock.quantity * stock.price };
-        pieSubject.next({ stock: newStock });
+        const newStock = { ...stock, finalValue: stock.quantity * stock.price };
+        allStocksSubject.next({ stock: newStock });
     },
-    clearStocks: () => pieSubject.next(),
-    getStocks: () => pieSubject.asObservable()
-}
+    clearStocks: () => allStocksSubject.next(),
+    getStocks: () => allStocksSubject.asObservable()
+};
 
 const finalValueSubject = new Subject();
 
-export const finalValueStocks = {
+export const finalValueStocksService = {
     sendStocks: stocks => {
         let finalValue = 0;
         stocks.map(stock => finalValue += stock.quantity * stock.price);
@@ -29,4 +29,11 @@ export const finalValueStocks = {
     },
     clearFinalValue: () => finalValueSubject.next(),
     getFinalValue: () => finalValueSubject.asObservable()
-}
+};
+
+const newInvestmentSubject = new Subject();
+
+export const newInvestmentService = {
+    sendNewValue: value => newInvestmentSubject.next({ value: value }),
+    getNewValue: () => newInvestmentSubject.asObservable()
+};

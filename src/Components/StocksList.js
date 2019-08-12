@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardHeader, CardTitle, CardBody, Table } from'reactstrap';
-import { stockListService, pieChartService, finalValueStocks } from '../Services';
+import { stockListService, allStocksService, finalValueStocksService } from '../Services';
 import FinalValueLine from './FinalValueLine';
 
 export default class StocksList extends Component {
@@ -18,13 +18,13 @@ export default class StocksList extends Component {
             if (message) {
                 // add message to local state if not empty
                 this.setState({ stocks: [...this.state.stocks, message.stock] });
-                pieChartService.sendStock(message.stock);
-                finalValueStocks.sendStocks([...this.state.stocks, message.stock]);
+                allStocksService.sendStock(message.stock);
+                finalValueStocksService.sendStocks([...this.state.stocks, message.stock]);
             } else {
                 // clear messages when empty message received
                 this.setState({ stocks: [] });
-                pieChartService.clearStocks();
-                finalValueStocks.clearFinalValue();
+                allStocksService.clearStocks();
+                finalValueStocksService.clearFinalValue();
             }
         });
     }
