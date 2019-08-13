@@ -38,7 +38,7 @@ export default class InputStocks extends Component {
                                 </Col>
                                 <Col lg="4" md="4" sm="4">
                                     <FormGroup>
-                                        <label>Price</label>
+                                        <label>Preço</label>
                                         <Input type="number" step="0.01" min="1" placeholder="Preco" className="form-control" innerRef={(input) => this.price = input} required={ true }/>
                                     </FormGroup>
                                 </Col>

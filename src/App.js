@@ -10,7 +10,7 @@ import CalculateNewBuys from './Components/CalculateNewBuys';
 export default function App() {
     return (
         <div className="App content">
-            <h2 className="text-center">Balanceador de carteira</h2>
+            <h2 className="text-center">Distribuidor de investimento</h2>
             <br/><br/>
             <Row>
                 <Col lg="6" md="6" sm="6">

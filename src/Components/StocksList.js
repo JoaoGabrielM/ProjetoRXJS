@@ -50,8 +50,8 @@ export default class StocksList extends Component {
                                     <tr key={ i }>
                                         <td>{ stock.code }</td>
                                         <td>{ stock.quantity }</td>
-                                        <td className="text-right">R$ { stock.price }</td>
-                                        <td className="text-right">R$ { stock.quantity * stock.price }</td>
+                                        <td className="text-right">R$ { new Intl.NumberFormat('pt').format(stock.price) }</td>
+                                        <td className="text-right">R$ { new Intl.NumberFormat('pt').format(stock.quantity * stock.price) }</td>
                                     </tr>
                                 )}
                             </tbody>

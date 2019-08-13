@@ -21,7 +21,7 @@ export default class FinalValueLine extends Component {
         return (
             <tr>
                 <td><b>Total:</b></td>
-                <td colSpan="3" className="text-right">R$ { this.state.finalValue }</td>
+                <td colSpan="3" className="text-right">R$ { new Intl.NumberFormat('pt').format(this.state.finalValue) }</td>
             </tr>
         )
     }
